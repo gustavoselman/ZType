@@ -6,12 +6,6 @@ on:
       - "*"
 
 jobs:
-  # passing the secret to a nested reusable workflow
-  pass-secret-to-workflow:
-    uses: ./.github/workflows/update-readme.yml
-    secrets:
-      token: ${{ secrets.access-token }}
-
   update:
     runs-on: ubuntu-latest
 
