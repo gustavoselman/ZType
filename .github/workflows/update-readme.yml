@@ -6,18 +6,12 @@ on:
       - "*"
 
 jobs:
-  # passing the secret to a nested reusable workflow
-  pass-secret-to-workflow:
-    uses: ./.github/workflows/update-readme.yml
-    secrets:
-      token: ${{ secrets.access-token }}
-
   update:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set current date
         run: |
@@ -30,4 +24,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git add README.md
           git commit -m "Update README.md with current date [Automatic]"
-          git push --set-upstream origin ${{ github.ref }}
+          git push
