@@ -3,9 +3,15 @@ name: Update README
 on:
   push:
     branches:
-      - main
+      - "*"
 
 jobs:
+  # passing the secret to a nested reusable workflow
+  pass-secret-to-workflow:
+    uses: ./.github/workflows/update-readme.yml
+    secrets:
+      token: ${{ secrets.access-token }}
+
   update:
     runs-on: ubuntu-latest
 
@@ -20,8 +26,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --local user.email "action@github.com"
+          git config --local user.email "actions@users.noreply.github.com"
           git config --local user.name "GitHub Action"
           git add README.md
-          git commit -m "Update README.md with current date"
-          git push
+          git commit -m "Update README.md with current date [Automatic]"
+          git push --set-upstream origin ${{ github.ref }}
