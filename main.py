@@ -32,16 +32,6 @@ class ZType:
 
         self.simulate_press_alphabet()
 
-    def simulate_press_words_of_the_game(self):
-        body = self.driver.find_element(By.TAG_NAME, "body")
-
-        while True:
-            for key, value in words.items():
-                for word in value:
-                    body.send_keys(word)
-                    sleep(0.03)
-            sleep(0.03)
-
     def simulate_press_alphabet(self):
         body = self.driver.find_element(By.TAG_NAME, "body")
 
