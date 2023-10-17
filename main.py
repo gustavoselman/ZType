@@ -7,7 +7,6 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 from chrome_options import get_chrome_options
-from words import words  # dict()
 
 
 class ZType:
